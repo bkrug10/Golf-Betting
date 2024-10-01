@@ -391,71 +391,6 @@ if (Tournament=="Masters" | Tournament=="The Open") {
   
 } else {
   Total_Tournaments <- which(Tournament_Data$POS=="1")
-  if (length(Total_Tournaments)>5) {
-    Tournament_Leaderboard <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, POS, PLAYER...3, SCORE)
-    colnames(Tournament_Leaderboard) <- c("Year", "Rank", "Player", "Score")
-    Tournament_T2G <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...5, PLAYER...6, `AVG...7`, `SG:OTT`, `SG:APR`, `SG:ARG`)
-    Tournament_T2G <- na.omit(Tournament_T2G)
-    colnames(Tournament_T2G) <- c("Year", "Rank", "Player", "T2G", "OTT", "APR", "ARG")
-    Tournament_Putting <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...12, PLAYER...13, AVG...14)
-    Tournament_Putting <- na.omit(Tournament_Putting)
-    colnames(Tournament_Putting) <- c("Year", "Rank", "Player", "Putt")
-    Tournament_DrivingDistance <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...17, PLAYER...18, AVG...19)
-    Tournament_DrivingDistance <- na.omit(Tournament_DrivingDistance)
-    colnames(Tournament_DrivingDistance) <- c("Year", "Rank", "Player", "Drive Distance")
-    Tournament_DrivingAccuracy <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...22, PLAYER...23, `%...24`)
-    Tournament_DrivingAccuracy <- na.omit(Tournament_DrivingAccuracy)
-    colnames(Tournament_DrivingAccuracy) <- c("Year", "Rank", "Player", "Drive Accuracy")
-    Tournament_150175APR <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...27, PLAYER...28, `AVG RTP...29`)
-    Tournament_150175APR <- na.omit(Tournament_150175APR)
-    colnames(Tournament_150175APR) <- c("Year", "Rank", "Player", "150-175")
-    Tournament_125150APR <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...30, PLAYER...31, `AVG RTP...32`)
-    Tournament_125150APR <- na.omit(Tournament_125150APR)
-    colnames(Tournament_125150APR) <- c("Year", "Rank", "Player", "125-150")
-    Tournament_Scrambling <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...33, PLAYER...34, `%...35`)
-    Tournament_Scrambling <- na.omit(Tournament_Scrambling)
-    colnames(Tournament_Scrambling) <- c("Year", "Rank", "Player", "Scrambling")
-    Tournament_OnePutt <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...38, PLAYER...39, `%...40`)
-    Tournament_OnePutt <- na.omit(Tournament_OnePutt)
-    colnames(Tournament_OnePutt) <- c("Year", "Rank", "Player", "One Putt")
-    Tournament_ThreePutt <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...43, PLAYER...44, `%...45`)
-    Tournament_ThreePutt <- na.omit(Tournament_ThreePutt)
-    colnames(Tournament_ThreePutt) <- c("Year", "Rank", "Player", "Three Putt")
-    Tournament_Par3 <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...48, PLAYER...49, `AVG...50`)
-    Tournament_Par3 <- na.omit(Tournament_Par3)
-    colnames(Tournament_Par3) <- c("Year", "Rank", "Player", "Par 3")
-    Tournament_Par4 <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...53, PLAYER...54, `AVG...55`)
-    Tournament_Par4 <- na.omit(Tournament_Par4)
-    colnames(Tournament_Par4) <- c("Year", "Rank", "Player", "Par 4")
-    Tournament_Par5 <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...58, PLAYER...59, `AVG...60`)
-    Tournament_Par5 <- na.omit(Tournament_Par5)
-    colnames(Tournament_Par5) <- c("Year", "Rank", "Player", "Par 5")
-    Tournament_TotalPutting <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...63, PLAYER...64, `AVG...65`)
-    Tournament_TotalPutting <- na.omit(Tournament_TotalPutting)
-    colnames(Tournament_TotalPutting) <- c("Year", "Rank", "Player", "Total Putting")
-    Tournament_Birdies <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...69, PLAYER...70, `%...71`)
-    Tournament_Birdies <- na.omit(Tournament_Birdies)
-    colnames(Tournament_Birdies) <- c("Year", "Rank", "Player", "Birdies")
-    Tournament_Bogeys <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[5]]) %>% 
-      select(YEAR, RANK...75, PLAYER...76, `% MAKES BOGEY`)
-    Tournament_Bogeys <- na.omit(Tournament_Bogeys)
-    colnames(Tournament_Bogeys) <- c("Year", "Rank", "Player", "Bogeys")
-  } else {
     Tournament_Leaderboard <- filter(Tournament_Data, YEAR>=Tournament_Data$YEAR[Total_Tournaments[length(Total_Tournaments)]]) %>% 
       select(YEAR, POS, PLAYER...3, SCORE)
     colnames(Tournament_Leaderboard) <- c("Year", "Rank", "Player", "Score")
@@ -519,7 +454,6 @@ if (Tournament=="Masters" | Tournament=="The Open") {
       select(YEAR, RANK...75, PLAYER...76, `% MAKES BOGEY`)
     Tournament_Bogeys <- na.omit(Tournament_Bogeys)
     colnames(Tournament_Bogeys) <- c("Year", "Rank", "Player", "Bogeys")
-  }
   Tournament_Data_Total <- data.frame()
   for (i in 1:length(Total_Tournaments)) {
     x <- data.frame()
@@ -638,11 +572,10 @@ if (Tournament=="Masters" | Tournament=="The Open") {
   } else {
     Tournament_Data_Total <- filter(Tournament_Data_Total, Year>=Tournament_Data$YEAR[Total_Tournaments[length(Total_Tournaments)]])
   }
-  model  <- lm(as.numeric(Score) ~ as.numeric(Putt) + as.numeric(ARG) + as.numeric(APR) + as.numeric(OTT) + as.numeric(`150-175`) + as.numeric(`125-150`) + as.numeric(Scrambling) + as.numeric(`One Putt`) + as.numeric(`Three Putt`) + as.numeric(`Par 3`) + as.numeric(`Par 4`) + as.numeric(`Par 5`) + as.numeric(`Drive Distance`) + as.numeric(`Drive Accuracy`) + as.numeric(`Total Putting`) + as.numeric(`Birdies`) + as.numeric(`Bogeys`), data = Tournament_Data_Total)
+  model  <- lm(as.numeric(Score) ~ as.numeric(Putt) + as.numeric(ARG) + as.numeric(APR) + as.numeric(OTT) + as.numeric(`150-175`) + as.numeric(`125-150`) + as.numeric(Scrambling) + as.numeric(`One Putt`) + as.numeric(`Three Putt`) + as.numeric(`Par 3`) + as.numeric(`Par 4`) + as.numeric(`Par 5`) + as.numeric(`Drive Distance`) + as.numeric(`Drive Accuracy`) + as.numeric(`Total Putting`) + as.numeric(`Birdies`) + as.numeric(`Bogeys`) + as.numeric(T2G), data = Tournament_Data_Total)
   Total_Stats <- Total_Stats %>%
-    mutate(Projected_Score=case_when(is.na(TourneyPutt)~(model$coefficients[1] + model$coefficients[2]*((.166*Putt + .5*`Last 5 Putt` + .333*`Last 10 Putt`)) + model$coefficients[3]*((.166*ARG + .5*`Last 5 ARG` + .333*`Last 10 ARG`)) + model$coefficients[4]*((.166*APR + .5*`Last 5 APR` + .333*`Last 10 APR`)) + model$coefficients[5]*((.166*OTT + .5*`Last 5 OTT` + .333*`Last 10 OTT`)) + model$coefficients[6]*((.166*`150-175 APR` + .5*`Last 5 150-175 APR` + .333*`Last 10 150-175 APR`)) + model$coefficients[7]*((.166*`125-150 APR` + .5*`Last 5 125-150 APR` + .333*`Last 10 125-150 APR`)) + model$coefficients[8]*((.166*Scrambling + .5*`Last 5 Scrambling` + .333*`Last 10 Scrambling`)) + model$coefficients[9]*((.166*`One Putt` + .5*`Last 5 One Putt` + .333*`Last 10 One Putt`)) + model$coefficients[10]*((.166*`Three Putt Avoidance` + .5*`Last 5 Three Putt Avoidance` + .333*`Last 10 Three Putt Avoidance`)) + model$coefficients[11]*((.166*`Par 3 Scoring` + .5*`Last 5 Par 3 Scoring` + .333*`Last 10 Par 3 Scoring`)) + model$coefficients[12]*((.166*`Par 4 Scoring` + .5*`Last 5 Par 4 Scoring` + .333*`Last 10 Par 4 Scoring`)) + model$coefficients[13]*((.166*`Par 5 Scoring` + .5*`Last 5 Par 5 Scoring` + .333*`Last 10 Par 5 Scoring`)) + model$coefficients[14]*((.166*`Driving Distance` + .5*`Last 5 Driving Distance` + .333*`Last 10 Driving Distance`)) + model$coefficients[15]*((.166*`Driving Accuracy` + .5*`Last 5 Driving Accuracy` + .333*`Last 10 Driving Accuracy`))  + model$coefficients[16]*((.166*`Total Putting` + .5*`Last 5 Total Putting` + .333*`Last 10 Total Putting`)) +   + model$coefficients[17]*((.166*`Birdies` + .5*`Last 5 Birdies` + .333*`Last 10 Birdies`))  + model$coefficients[18]*((.166*`Bogeys` + .5*`Last 5 Bogeys` + .333*`Last 10 Bogeys`))),
-                                     !is.na(TourneyPutt)~(model$coefficients[1] + model$coefficients[2]*((.1*Putt + .3*`Last 5 Putt` + .2*`Last 10 Putt` + .4*TourneyPutt)) + model$coefficients[3]*((.1*ARG + .3*`Last 5 ARG` + .2*`Last 10 ARG` + .4*TourneyARG)) + model$coefficients[4]*((.1*APR + .3*`Last 5 APR` + .2*`Last 10 APR` + .4*TourneyAPR)) + model$coefficients[5]*((.1*OTT + .3*`Last 5 OTT` + .2*`Last 10 OTT` + .4*TourneyOTT)) + model$coefficients[6]*((.1*`150-175 APR` + .3*`Last 5 150-175 APR` + .2*`Last 10 150-175 APR` + .4*Tourney150175APR)) + model$coefficients[7]*((.1*`125-150 APR` + .3*`Last 5 125-150 APR` + .2*`Last 10 125-150 APR` + .4*Tourney125150APR)) + model$coefficients[8]*((.1*Scrambling + .3*`Last 5 Scrambling` + .2*`Last 10 Scrambling` + .4*TourneyScrambling)) + model$coefficients[9]*((.1*`One Putt` + .3*`Last 5 One Putt` + .2*`Last 10 One Putt` + .4*TourneyOnePutt)) + model$coefficients[10]*((.1*`Three Putt Avoidance` + .3*`Last 5 Three Putt Avoidance` + .2*`Last 10 Three Putt Avoidance` + .4*TourneyThreePutt)) + model$coefficients[11]*((.1*`Par 3 Scoring` + .3*`Last 5 Par 3 Scoring` + .2*`Last 10 Par 3 Scoring` + .4*TourneyPar3)) + model$coefficients[12]*((.1*`Par 4 Scoring` + .3*`Last 5 Par 4 Scoring` + .2*`Last 10 Par 4 Scoring` + .4*TourneyPar4)) + model$coefficients[13]*((.1*`Par 5 Scoring` + .3*`Last 5 Par 5 Scoring` + .2*`Last 10 Par 5 Scoring` + .4*TourneyPar5)) + model$coefficients[14]*((.1*`Driving Distance` + .3*`Last 5 Driving Distance` + .2*`Last 10 Driving Distance` + .4*TourneyDriveDistance)) + model$coefficients[15]*((.1*`Driving Accuracy` + .3*`Last 5 Driving Accuracy` + .2*`Last 10 Driving Accuracy` + .4*TourneyDriveAccuracy)) + model$coefficients[16]*((.1*`Total Putting` + .3*`Last 5 Total Putting` + .2*`Last 10 Total Putting` + .4*TourneyTotalPutting)) + model$coefficients[17]*((.1*`Birdies` + .3*`Last 5 Birdies` + .2*`Last 10 Birdies` + .4*TourneyBirdies)) + model$coefficients[18]*((.1*`Bogeys` + .3*`Last 5 Bogeys` + .2*`Last 10 Bogeys` + .4*TourneyBogeys)))))
-  
+    mutate(Projected_Score=case_when(is.na(TourneyPutt)~(model$coefficients[1] + model$coefficients[2]*((.166*Putt + .5*`Last 5 Putt` + .333*`Last 10 Putt`)) + model$coefficients[3]*((.166*ARG + .5*`Last 5 ARG` + .333*`Last 10 ARG`)) + model$coefficients[4]*((.166*APR + .5*`Last 5 APR` + .333*`Last 10 APR`)) + model$coefficients[5]*((.166*OTT + .5*`Last 5 OTT` + .333*`Last 10 OTT`)) + model$coefficients[6]*((.166*`150-175 APR` + .5*`Last 5 150-175 APR` + .333*`Last 10 150-175 APR`)) + model$coefficients[7]*((.166*`125-150 APR` + .5*`Last 5 125-150 APR` + .333*`Last 10 125-150 APR`)) + model$coefficients[8]*((.166*Scrambling + .5*`Last 5 Scrambling` + .333*`Last 10 Scrambling`)) + model$coefficients[9]*((.166*`One Putt` + .5*`Last 5 One Putt` + .333*`Last 10 One Putt`)) + model$coefficients[10]*((.166*`Three Putt Avoidance` + .5*`Last 5 Three Putt Avoidance` + .333*`Last 10 Three Putt Avoidance`)) + model$coefficients[11]*((.166*`Par 3 Scoring` + .5*`Last 5 Par 3 Scoring` + .333*`Last 10 Par 3 Scoring`)) + model$coefficients[12]*((.166*`Par 4 Scoring` + .5*`Last 5 Par 4 Scoring` + .333*`Last 10 Par 4 Scoring`)) + model$coefficients[13]*((.166*`Par 5 Scoring` + .5*`Last 5 Par 5 Scoring` + .333*`Last 10 Par 5 Scoring`)) + model$coefficients[14]*((.166*`Driving Distance` + .5*`Last 5 Driving Distance` + .333*`Last 10 Driving Distance`)) + model$coefficients[15]*((.166*`Driving Accuracy` + .5*`Last 5 Driving Accuracy` + .333*`Last 10 Driving Accuracy`))  + model$coefficients[16]*((.166*`Total Putting` + .5*`Last 5 Total Putting` + .333*`Last 10 Total Putting`)) +   + model$coefficients[17]*((.166*`Birdies` + .5*`Last 5 Birdies` + .333*`Last 10 Birdies`))  + model$coefficients[18]*((.166*`Bogeys` + .5*`Last 5 Bogeys` + .333*`Last 10 Bogeys`)) + model$coefficients[19]*((.166*`T2G` + .5*`Last 5 T2G` + .333*`Last 10 T2G`))),
+                                     !is.na(TourneyPutt)~(model$coefficients[1] + model$coefficients[2]*((.1*Putt + .3*`Last 5 Putt` + .2*`Last 10 Putt` + .4*TourneyPutt)) + model$coefficients[3]*((.1*ARG + .3*`Last 5 ARG` + .2*`Last 10 ARG` + .4*TourneyARG)) + model$coefficients[4]*((.1*APR + .3*`Last 5 APR` + .2*`Last 10 APR` + .4*TourneyAPR)) + model$coefficients[5]*((.1*OTT + .3*`Last 5 OTT` + .2*`Last 10 OTT` + .4*TourneyOTT)) + model$coefficients[6]*((.1*`150-175 APR` + .3*`Last 5 150-175 APR` + .2*`Last 10 150-175 APR` + .4*Tourney150175APR)) + model$coefficients[7]*((.1*`125-150 APR` + .3*`Last 5 125-150 APR` + .2*`Last 10 125-150 APR` + .4*Tourney125150APR)) + model$coefficients[8]*((.1*Scrambling + .3*`Last 5 Scrambling` + .2*`Last 10 Scrambling` + .4*TourneyScrambling)) + model$coefficients[9]*((.1*`One Putt` + .3*`Last 5 One Putt` + .2*`Last 10 One Putt` + .4*TourneyOnePutt)) + model$coefficients[10]*((.1*`Three Putt Avoidance` + .3*`Last 5 Three Putt Avoidance` + .2*`Last 10 Three Putt Avoidance` + .4*TourneyThreePutt)) + model$coefficients[11]*((.1*`Par 3 Scoring` + .3*`Last 5 Par 3 Scoring` + .2*`Last 10 Par 3 Scoring` + .4*TourneyPar3)) + model$coefficients[12]*((.1*`Par 4 Scoring` + .3*`Last 5 Par 4 Scoring` + .2*`Last 10 Par 4 Scoring` + .4*TourneyPar4)) + model$coefficients[13]*((.1*`Par 5 Scoring` + .3*`Last 5 Par 5 Scoring` + .2*`Last 10 Par 5 Scoring` + .4*TourneyPar5)) + model$coefficients[14]*((.1*`Driving Distance` + .3*`Last 5 Driving Distance` + .2*`Last 10 Driving Distance` + .4*TourneyDriveDistance)) + model$coefficients[15]*((.1*`Driving Accuracy` + .3*`Last 5 Driving Accuracy` + .2*`Last 10 Driving Accuracy` + .4*TourneyDriveAccuracy)) + model$coefficients[16]*((.1*`Total Putting` + .3*`Last 5 Total Putting` + .2*`Last 10 Total Putting` + .4*TourneyTotalPutting)) + model$coefficients[17]*((.1*`Birdies` + .3*`Last 5 Birdies` + .2*`Last 10 Birdies` + .4*TourneyBirdies)) + model$coefficients[18]*((.1*`Bogeys` + .3*`Last 5 Bogeys` + .2*`Last 10 Bogeys` + .4*TourneyBogeys)) + model$coefficients[19]*((.1*`T2G` + .3*`Last 5 T2G` + .2*`Last 10 T2G` + .4*TourneyT2G)))))
 }
 
 
